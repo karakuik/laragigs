@@ -64,6 +64,15 @@ Route::get('/search', function(Request $request){
 //    }
 //});
 
+//Get all listings
 Route::get('/', [ListingController::class, 'index']);
 
+// Show Create form
+Route::get('/listings/create', [ListingController::class, 'create']);
+
+Route::post('/listings', [ListingController::class, 'store']);
+
+// Single Listing
+// POTENTIAL BUG!!! If making a new /listings/XXX, if listings/{XXX} is on top, it will try to go to that first
+// So you will not be able to access create, unless this route is beneath it
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
