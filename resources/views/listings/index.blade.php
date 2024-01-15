@@ -12,4 +12,9 @@
             @endforeach
         @endunless
     </div>
+
+    <div class="mt-6 p-4">
+{{--        Adds pagination links at the bottom, i.e. < 1 2 3 4 5 >--}}
+        {{$listings->links()}}
+    </div>
 </x-layout>
