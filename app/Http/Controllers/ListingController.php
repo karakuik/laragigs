@@ -30,7 +30,6 @@ class ListingController extends Controller
 
     // Store Listing Data
     public function store(Request $request){
-        // 2:14:30 when i broke off
         $formFields = $request->validate([
             'title' => 'required',
             'company' => ['required', Rule::unique('listings', 'company')], //Rule allows us to have a unique company name, while it checks listings for company name
@@ -40,6 +39,10 @@ class ListingController extends Controller
             'tags' => 'required',
             'description' => 'required'
         ]);
+
+        if($request->hasFile('logo')){
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public'); //Makes dir logos
+        }
 
         Listing::create($formFields);
 
