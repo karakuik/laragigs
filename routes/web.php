@@ -69,7 +69,7 @@ Route::get('/search', function(Request $request){
 Route::get('/', [ListingController::class, 'index']);
 
 // Show Create form
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
 // Store Listing Data
 Route::post('/listings', [ListingController::class, 'store']);
@@ -96,3 +96,9 @@ Route::post('/users', [UserController::class, 'store']);
 
 // Log User Out
 Route::post('/logout', [UserController::class, 'logout']);
+
+// Show Login Form
+Route::get('/login', [UserController::class, 'login'])->name('login');
+
+// Log in User
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
