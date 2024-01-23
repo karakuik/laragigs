@@ -106,3 +106,5 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // Log in User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+//Thanks for Playing!
