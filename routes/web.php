@@ -74,6 +74,9 @@ Route::get('/listings/create', [ListingController::class, 'create'])->middleware
 // Store Listing Data
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
+// Manage Listings
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');;
+
 // Show edit form
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
@@ -87,6 +90,7 @@ Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->mid
 // POTENTIAL BUG!!! If making a new /listings/XXX, if listings/{XXX} is on top, it will try to go to that first
 // So you will not be able to access create, unless this route is beneath it
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
 
 // Show register create form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
